@@ -1,0 +1,16 @@
+{
+  "name": "activite-final",
+  "version": "1.0.0",
+  "description": "activite final de nodejs - todolist en temps reel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fell",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "http": "0.0.0",
+    "socket.io": "^2.2.0"
+  }
+}
