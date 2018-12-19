@@ -6,57 +6,48 @@ var express = require('express'),
     http = require('http');
     
 
-
+// Creation de l'app puis du serveur
 var app = express();
-var server = app.listen(8080, () => {
-  console.log('Listening on port 8080');
-});
+var server = http.createServer(app);
 
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 var io = socket(server);
 
 
 //app.use(morgan('combined'));
-app.use(cookieSession({secret: 'todosecret'}));
+//app.use(cookieSession({secret: 'todosecret'}));
 
+var taches = []; // Cree une liste pour ajouter des taches dans le serveur
+//var connections = [];
 
-var taches = [];
-var users = [];
-var connections = [];
+app.use(express.static('public'));
 
-
+/*
 app.use( (req, res, next) => {
   if (typeof (req.session.taches) == 'undefined') {
     taches == [];
   }
   next();
 });
+*/
+
 
 
 app.get('/todo', (req, res) => {
-  res.render('page.ejs', {taches: taches});
+  res.sendFile(__dirname + "/views/index.html");
 });
 
-
-app.post('/todo/ajouter', urlencodedParser ,(req, res) => {
-  if (req.body.tache != '') {
-    taches.push(req.body.tache);
-  }
-  res.redirect('/todo');
-});
-
-app.get('/todo/supprimer/:id', (req, res) => {
-  if (req.params.id != '') {
-    taches.splice(req.params.id, 1);
-  }
-  res.redirect('/todo');
-})
 
 app.use('*', (req, res) => {
   res.redirect('/todo');
-})
+});
+
+
 
 io.on('connection', (socket, username) => {
+
+  console.log("User connected")
+
   socket.emit('test', 'testing from server')
   var socketID = socket.id;
   console.log('somebody connected' , socketID);
@@ -81,4 +72,9 @@ io.on('connection', (socket, username) => {
 
 
 
+});
+
+
+server.listen(8000, () => {
+  console.log("Listening on port 8000");
 });
