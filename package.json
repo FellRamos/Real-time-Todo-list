@@ -1,5 +1,5 @@
 {
-  "name": "Real-Time Todolist",
+  "name": "realtime todolist",
   "version": "1.0.0",
   "description": "activite final de nodejs - todolist en temps reel",
   "main": "server.js",
