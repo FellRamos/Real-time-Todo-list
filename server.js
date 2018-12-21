@@ -8,7 +8,10 @@ var http = require('http'),
 var app = express();
 var server = http.createServer(app);
 
-// Utilization de Socket.IO (J'ai reste coince des heures, car j'avais cree socketIO avant du serveur!)
+// Utilization de Socket.IO 
+/*
+	J'ai reste coince des heures, car j'avais cree socketIO avant le serveur!)
+*/
 var socketIO = socket(server)
 
 // Variables
@@ -17,17 +20,14 @@ var listeTaches = [];
 // Middleware
 app.use(express.static('public'));
 
-
 // Routes
-
-// Page principal /todo - Affiche la page HTML
+// Page principal /todo - Affiche la page HTML 
 app.get('/todo', (req, res) => {
 	res.sendFile(__dirname + '/views/index.html');
 	//console.log("In /todo route!")
 });
 
-
-// Redirection ver la page /todo
+//Redirection ver la page /todo
 app.use('*', (req, res, next) => {
 	res.redirect('/todo');
 	next();
@@ -37,22 +37,20 @@ app.use('*', (req, res, next) => {
 // Sockets
 socketIO.on('connection', function(socket) {
 
-	console.log('User connected');
+	console.log('Utilisateur connecte');
 
 	// Des que le user se connecte, le tableau listeTaches est envoye
 	socket.emit('listeTaches', listeTaches);
 
-
-	// Un client ajoute une tache, donc fait un emit du cote client.
+	// Un client ajoute une tache, donc on recoit un emit du cote client.
 	socket.on('newTask', (tache) => {
 		listeTaches.push(tache);
-		var index = listeTaches.length - 1;
-		socketIO.emit('newTask', {tache: tache, index: index} );
 		/*
-		Il faut que ce soit socketIO
-		(en dehors de ce socket) pour envoyer a tout le monde.. 
-		ou alors on fait socket.emit + socket.broadcast.emit 
+			Il faut que ce soit socketIO
+			(en dehors de ce socket) pour envoyer a tout le monde.. 
+			ou alors on fait socket.emit + socket.broadcast.emit 
 		*/
+		socketIO.emit('listeTaches', listeTaches);
 	});
 
 	socket.on('deleteTask', (index) => {

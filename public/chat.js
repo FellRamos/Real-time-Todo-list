@@ -5,15 +5,14 @@ var socket = io.connect('http://localhost:8080');
 
 
 
-// Listening events: 
+// Liste des taches
+
 socket.on('listeTaches', (listeTaches) => {
-	$('#liste').empty();
-	listeTaches.forEach( (task, index) => {
-		addingTask(task, index);
+	$('#liste').empty(); // A chaque foi, on fait le refresh de la page
+	listeTaches.forEach( (tache, index) => {
+		insererTache(tache, index);
 	});
 });
-
-
 
 
 // Ajouter une tache
@@ -22,23 +21,27 @@ $('#button').on('click', () => {
 	socket.emit('newTask', task);
 });
 
-socket.on('newTask', (taskAndIndex) => {
-	addingTask(taskAndIndex.tache, taskAndIndex.index);
+
+// Supprimer une tache
+$('body').on('click', '.delete', function() {
+    socket.emit('deleteTask', $(this).data('index'));
 });
+/*
+	Note importante: Pour le deleteTask, les Arrow Functions ( => ) ne marche pas!
+	J'ai reste des heures dessus, mais le "this" ne marche pas. J'ai trouve ca:
+	"There are several things conventional functions define for you that arrow functions 
+	do not, like arguments and as Max pointed out, this."
+	-> https://teamtreehouse.com/community/arrow-functions-jquery
+	"
+*/
 
 
 
-
-
-
-
-
-function addingTask(newTask, newIndex) {
-	$('#liste').append(`<li><a class="delete" href="#" data-index="${newIndex}" > ✘ </a> "${newIndex}" ${newTask} </li>`);
+// Fonction pour ajouter les taches dans le HTML
+function insererTache(tache, index) {
+	$('#liste').append(`<li><a class="delete" href="#" data-index="${index}" > ✘ </a> ${tache} </li>`);
 }
 
 
 
-$('body').on('click', '.delete', function() {
-    socket.emit('deleteTask', $(this).data('index'));
-});
+
