@@ -1,20 +1,20 @@
 {
-  "name": "activite-final",
+  "name": "Real-Time Todolist",
   "version": "1.0.0",
   "description": "activite final de nodejs - todolist en temps reel",
   "main": "server.js",
+  "author": "Feliciano Ramos",
+  "repository": {
+        "type": "git",
+        "url": "https://github.com/FellRamos/Real-time-Todo-list.git"
+    },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Fell",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "cookie-session": "^2.0.0-beta.3",
-    "ejs": "^2.6.1",
-    "ent": "^2.2.0",
     "express": "^4.16.4",
-    "http": "0.0.0",
     "socket.io": "^2.2.0"
   }
 }
