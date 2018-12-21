@@ -2,37 +2,43 @@
 // Connecter au serveur
 var socket = io.connect('http://localhost:8080');
 
-// Query the DOM
-// var button = document.getElementById('button')
-// the same as 
-var button = $('#button');
-var message = $('tache');
 
 
 
-var username = prompt("Quel est votre pseudo?");
-
-socket.emit('user', username);
-
-
-button.on('click', () => {
-	socket.emit('new_todo', message.value );
-})
-
-
-//
-
-
-
-// Listening events
-socket.on('nick', (user) => {
-	alert(`hello ${user}`!)
+// Listening events: 
+socket.on('listeTaches', (listeTaches) => {
+	$('#liste').empty();
+	listeTaches.forEach( (task, index) => {
+		addingTask(task, index);
+	});
 });
 
-socket.on('new_todo', (user, data) => {
-	$('#ol').append(data)
+
+
+
+// Ajouter une tache
+$('#button').on('click', () => {
+	var task = $('#myInput').val();
+	socket.emit('newTask', task);
 });
 
-socket.on('test', () => {
-	console.log('testing from client!')
-})
+socket.on('newTask', (taskAndIndex) => {
+	addingTask(taskAndIndex.tache, taskAndIndex.index);
+});
+
+
+
+
+
+
+
+
+function addingTask(newTask, newIndex) {
+	$('#liste').append(`<li><a class="delete" href="#" data-index="${newIndex}" > ✘ </a> "${newIndex}" ${newTask} </li>`);
+}
+
+
+
+$('body').on('click', '.delete', function() {
+    socket.emit('deleteTask', $(this).data('index'));
+});

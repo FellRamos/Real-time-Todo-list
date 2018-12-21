@@ -2,7 +2,7 @@
   "name": "activite-final",
   "version": "1.0.0",
   "description": "activite final de nodejs - todolist en temps reel",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +12,7 @@
     "body-parser": "^1.18.3",
     "cookie-session": "^2.0.0-beta.3",
     "ejs": "^2.6.1",
+    "ent": "^2.2.0",
     "express": "^4.16.4",
     "http": "0.0.0",
     "socket.io": "^2.2.0"

@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>To-do List</title>
-  <script>src="https://code.jquery.com/jquery-3.3.1.js"
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Real-Time Todo List</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    <div class="container">
+
+      <!-- Form pour enregistrer les donnes --> 
+      <form id="todoListForm" method="post" action="/">
+        <div class="groupeListForm">
+          <h2>Todo List en temps reel!!!</h2>
+          <label for="myInput">New Task?</label>
+          <input type="text" id="myInput" placeholder="Add your next task...">
+          <!-- <span onclick="newElement()" class="addBtn">Ajouter</span> -->
+          <button type="submit" id="button">Submit</button>
+        </div>  
+      </form>
+      
+      <!-- TODO LIST-->
+      <ul id="liste"></ul>
+
+    </div>  
+    
+    <!-- JS Files -->
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
-  
-
-</head>
-<body>
-  <div id="myDIV" class="header">
-    <h2>My To Do List</h2>
-    <input type="text" id="myInput" placeholder="Ajoutez une tache...">
-    <!-- <span onclick="newElement()" class="addBtn">Ajouter</span> -->
-    <button id="btn">Ajouter</button>
-  </div>
-
-  <ul id="myUL">
-    <!-- <li>Hit the gym</li>
-    <li class="checked">Pay bills</li>
-    <li>Meet George</li>
-    <li>Buy eggs</li>
-    <li>Read a book</li>
-    <li>Organize office</li> -->
-  </ul>
-  <script src="/socket.io/socket.io.js">></script>
-  <script src="/chat.js"></script>
-</body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="chat.js"></script>
+  </body>
 </html>
