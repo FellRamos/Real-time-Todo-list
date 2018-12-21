@@ -3,7 +3,6 @@ var http = require('http'),
 	express = require('express'),
 	socket = require('socket.io');
 
-
 // Creation du serveur en utilisant aussi express
 var app = express();
 var server = http.createServer(app);
@@ -33,11 +32,8 @@ app.use('*', (req, res, next) => {
 	next();
 });
 
-
 // Sockets
 socketIO.on('connection', function(socket) {
-
-	console.log('Utilisateur connecte');
 
 	// Des que le user se connecte, le tableau listeTaches est envoye
 	socket.emit('listeTaches', listeTaches);
@@ -46,19 +42,21 @@ socketIO.on('connection', function(socket) {
 	socket.on('newTask', (tache) => {
 		listeTaches.push(tache);
 		/*
-			Il faut que ce soit socketIO
-			(en dehors de ce socket) pour envoyer a tout le monde.. 
-			ou alors on fait socket.emit + socket.broadcast.emit 
+			On envoie le tableau listeTaches. Il faut que ce soit socketIO
+			(en dehors de ce socket) pour envoyer le tableau a tout le monde
+			(ou alors on fait socket.emit + socket.broadcast.emit).
 		*/
 		socketIO.emit('listeTaches', listeTaches);
 	});
 
 	socket.on('deleteTask', (index) => {
 		listeTaches.splice(index, 1);
+		// On envoie le tableau listeTaches.
 		socketIO.emit('listeTaches', listeTaches);
 	});
 });
 
-
 // Port du serveur
-server.listen(8080);
+server.listen(8080, () => {
+	console.log("listening on port 8080");
+});

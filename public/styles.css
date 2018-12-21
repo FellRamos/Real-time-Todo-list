@@ -21,15 +21,6 @@ h1{
     box-sizing: border-box;
 }
 
-/*#Liste form:after{
-    margin: 0;
-    content: '';
-    display: block;
-    clear: both;
-}*/
-
-
-
 #myInput[type="text"]{
     width: 67.5%;
     padding: 20px;
@@ -51,7 +42,6 @@ h1{
     cursor: pointer;
     font-size: 20px;
 }
-
 
 #Liste{
     position: relative;
@@ -83,6 +73,7 @@ li:hover{
     background: rgba(0,0,0,0.2);
 }
 
+/* J'ai trouve ca sur internet pour les Placeholders */
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #778899;
   opacity: 1; /* Firefox */

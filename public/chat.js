@@ -2,9 +2,6 @@
 // Connecter au serveur
 var socket = io.connect('http://localhost:8080');
 
-
-
-
 // Liste des taches
 
 socket.on('listeTaches', (listeTaches) => {
@@ -14,13 +11,11 @@ socket.on('listeTaches', (listeTaches) => {
 	});
 });
 
-
 // Ajouter une tache
 $('#button').on('click', () => {
 	var task = $('#myInput').val();
 	socket.emit('newTask', task);
 });
-
 
 // Supprimer une tache
 $('#Liste').on('click', '.delete', function() {
@@ -32,10 +27,7 @@ $('#Liste').on('click', '.delete', function() {
 	"There are several things conventional functions define for you that arrow functions 
 	do not, like arguments and as Max pointed out, this."
 	-> https://teamtreehouse.com/community/arrow-functions-jquery
-	"
 */
-
-
 
 // Fonction pour ajouter les taches dans le HTML
 function insererTache(tache, index) {
