@@ -1,30 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-    <title>Real-Time Todo List</title>
-<!--     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" type="text/css" href="styles.css">
-  </head>
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team TodoList</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  
+  </head>
   <body>
+
     <div class="container">
+    
+      <h1>Team Todo List</h1>
 
       <!-- Form pour enregistrer les donnes --> 
-      <form id="todoListForm" method="post" action="/">
-        <div class="groupeListForm">
-          <h2>Todo List en temps reel!!!</h2>
-          <label for="myInput">New Task?</label>
-          <input type="text" id="myInput" placeholder="Add your next task...">
-          <!-- <span onclick="newElement()" class="addBtn">Ajouter</span> -->
-          <button type="submit" id="button">Submit</button>
-        </div>  
+      <form id="Form" method="post" action="/">
+        <input type="text" id="myInput" placeholder="Add your next task...">
+        <button type="submit" id="button">Add task</button>
       </form>
-      
       <!-- TODO LIST-->
-      <ul id="liste"></ul>
-
+      <ul id="Liste"></ul>
     </div>  
 
     <!-- JS Files -->
@@ -34,5 +30,6 @@
   crossorigin="anonymous"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="chat.js"></script>
+
   </body>
 </html>

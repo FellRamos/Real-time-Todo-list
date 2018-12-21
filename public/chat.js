@@ -8,7 +8,7 @@ var socket = io.connect('http://localhost:8080');
 // Liste des taches
 
 socket.on('listeTaches', (listeTaches) => {
-	$('#liste').empty(); // A chaque foi, on fait le refresh de la page
+	$('#Liste').empty(); // A chaque foi, on fait le refresh de la page
 	listeTaches.forEach( (tache, index) => {
 		insererTache(tache, index);
 	});
@@ -23,7 +23,7 @@ $('#button').on('click', () => {
 
 
 // Supprimer une tache
-$('body').on('click', '.delete', function() {
+$('#Liste').on('click', '.delete', function() {
     socket.emit('deleteTask', $(this).data('index'));
 });
 /*
@@ -39,7 +39,7 @@ $('body').on('click', '.delete', function() {
 
 // Fonction pour ajouter les taches dans le HTML
 function insererTache(tache, index) {
-	$('#liste').append(`<li><a class="delete" href="#" data-index="${index}" > ✘ </a> ${tache} </li>`);
+	$('#Liste').append(`<li class="delete" data-index="${index}">${tache}</li>`);
 }
 
 

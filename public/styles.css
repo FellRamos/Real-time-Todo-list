@@ -1,45 +1,65 @@
 body{
-    background: #0d1521;
+    background: #191970;
     font-family: tahoma;
-    color: #989898;
+    color:  #D3D3D3;
 }
 
-#todo-table{
+h1{
+    width: 95%;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    color: #D3D3D3;
+}
+
+#Form{
     position: relative;
     width: 95%;
-    background: #090d13;
+    background: #7B68EE;
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
 }
 
-#todo-table form:after{
+/*#Liste form:after{
     margin: 0;
     content: '';
     display: block;
     clear: both;
-}
+}*/
 
-input[type="text"]{
-    width: 70%;
+
+
+#myInput[type="text"]{
+    width: 67.5%;
     padding: 20px;
-    background:#181c22;
+    background: rgba(0,0,0,0.2);
     border: 0;
-    float: left;
     font-size: 20px;
-    color: #989898;
+    color: #D3D3D3;
 }
 
-button{
+#button{
     padding: 20px;
-    width: 30%;
-    float: left;
-    background: #23282e;
+    width: 29%;
     border: 0;
     box-sizing: border-box;
-    color: #fff;
+    float: right;
+    background: #191970;
+    border: 0;
+    color: #D3D3D3;
     cursor: pointer;
     font-size: 20px;
+}
+
+
+#Liste{
+    position: relative;
+    width: 95%;
+    background: #7B68EE;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 ul{
@@ -50,7 +70,7 @@ ul{
 
 li{
     width: 100%;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
     font-family: arial;
     font-size: 20px;
@@ -63,8 +83,15 @@ li:hover{
     background: rgba(0,0,0,0.2);
 }
 
-h1{
-    background: url(/logo.png) no-repeat center;
-    margin-bottom: 0;
-    text-indent: -10000px;
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #778899;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #778899;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #778899;
 }
