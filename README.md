@@ -9,4 +9,4 @@ Du coup les routes sont plutot simples dans mon ca.. et je prefere aussi separer
 
 ## Instructions
 
->Il faut telecharger tous les fichiers et puis, dans le dossier principal (ou se trouve server.js) faire un NPM INSTALL, pour avoir les >modules. Apres il faut juste lancer le server avec **node server.js** ou **nodemon server**.
+>Il faut telecharger tous les fichiers et puis, dans le dossier principal (ou se trouve server.js) faire un NPM INSTALL, pour avoir les modules. Apres il faut juste lancer le server avec **node server.js** ou **nodemon server**.
